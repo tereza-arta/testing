@@ -21,7 +21,7 @@ jobs:
         run : docker build -t terezabisharyan/node-44:${{ env.SHORT_SHA }} ./app/
 
       - name: Test the newly created build image
-        run : docker run --rm -d -p 3000:3000 --name test-mynodeapp mynodeapp 3000
+        run : docker run --rm -d -p 3000:3000 --name test-mynodeapp terezabisharyan/node-44:${{ env.SHORT_SHA }} 3000
 
       - name: Push image to DockerHub
         if  : success()
